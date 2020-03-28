@@ -16,9 +16,9 @@ horizontal(float angle, char* ims, char* imd)
 
   float tanAng = tanf(angle*pi/180.0);
   
-  float decal = tanAng * (float)rows;
+  float decal = fabsf(tanAng) * (float)rows;
 
-  int cols2 = cols + (int)decal;
+  int cols2 = cols + (int)decal + 1;
   pnm imd2 = pnm_new(cols2, rows, PnmRawPpm);
 
   for (int i = 0; i < rows; i++) {
@@ -54,9 +54,9 @@ vertical(float angle, char* ims, char* imd)
 
   float tanAng = tanf(angle*pi/180.0);
   
-  float decal = tanAng * (float)cols;
+  float decal = fabs(tanAng) * (float)cols;
 
-  int rows2 = rows + (int)decal;
+  int rows2 = rows + (int)decal + 1;
   pnm imd2 = pnm_new(cols, rows2, PnmRawPpm);
 
   for (int i = 0; i < rows2; i++) {
